@@ -26,3 +26,27 @@ export interface PokemonListResponse {
     results: PokemonResult[];
 
 }
+
+export interface PokemonDetailResponse {
+
+    id: number;
+    name: string;
+    height: number;
+    weight: number;
+    base_experience: number;
+
+    sprites: {
+        front_default: string;
+    };
+
+    cries: {
+        latest: string;
+    };
+
+    types: {
+        type: {
+            name: string;
+        };
+    }[];
+
+}
