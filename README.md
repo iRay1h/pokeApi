@@ -57,3 +57,21 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Cambios realizados (resumen)
+
+- Se añadió tipado completo en `src/app/features/pokemon/model/PokemonModel.ts`.
+- Se actualizó `PokemonService` para usar `switchMap`, `forkJoin`, `map`, `catchError` y `shareReplay`.
+- El componente de lista ahora usa `app-pokemon-card` y gestiona estados de carga y error.
+- Plantillas y estilos actualizados para una apariencia tipo Pokédex.
+
+## Ejecutar el proyecto
+
+Instala dependencias y arranca el servidor de desarrollo:
+
+```bash
+npm install
+ng serve
+```
+
+Abre http://localhost:4200/ en tu navegador.

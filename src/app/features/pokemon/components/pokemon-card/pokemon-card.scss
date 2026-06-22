@@ -1,0 +1,33 @@
+:host {
+	display: block;
+}
+
+.pokemon-card {
+	background: linear-gradient(180deg,#fff 0%, #f7f7f7 100%);
+	border-radius: 14px;
+	padding: 18px;
+	text-align: center;
+	border: 6px solid #c62828;
+	box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+.pokemon-card img {
+	width: 160px;
+	height: 160px;
+	image-rendering: pixelated;
+	margin-bottom: 8px;
+}
+
+.pokemon-card h2 {
+	color: #c62828;
+	margin: 6px 0;
+}
+
+.pokemon-card .stats {
+	margin-top: 8px;
+	text-align: left;
+}
+.pokemon-card .stats ul {
+	padding-left: 18px;
+	margin: 6px 0;
+}

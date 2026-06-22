@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { App } from './app';
+import { PokemonModule } from './features/pokemon/pokemon-module';
+import { AppRoutingModule } from './app-routing-module';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,9 @@ import { App } from './app';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    PokemonModule,
+    AppRoutingModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

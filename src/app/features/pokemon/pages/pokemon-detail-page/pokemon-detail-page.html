@@ -1,0 +1,57 @@
+<button class="back-btn" (click)="goBack()">← Volver</button>
+
+<div *ngIf="pokemon" class="pokedex-card">
+
+  <div class="left-pane">
+    <img [src]="pokemon.image" [alt]="pokemon.name" />
+    <div class="mini-id">#{{ pokemon.id }}</div>
+    <button class="play-btn" (click)="playCry()">
+      {{ isPlaying ? 'Pausar cry' : 'Reproducir cry' }}
+    </button>
+    <audio #cryPlayer [src]="pokemon.cry"></audio>
+  </div>
+
+  <div class="right-pane">
+    <div class="title-row">
+      <h1>{{ pokemon.name | titlecase }}</h1>
+      <div class="small-id">#{{ pokemon.id }}</div>
+    </div>
+
+    <div class="button-row">
+      <button class="nav-btn" (click)="previousPokemon()" [disabled]="!pokemon || pokemon.id <= 1">Anterior</button>
+      <button class="nav-btn" (click)="nextPokemon()">Siguiente</button>
+    </div>
+
+    <div class="meta">
+      <p><strong>Altura:</strong> {{ pokemon.height }}</p>
+      <p><strong>Peso:</strong> {{ pokemon.weight }}</p>
+      <p><strong>Tipos:</strong> {{ pokemon.types.join(', ') }}</p>
+      <p><strong>Experiencia Base:</strong> {{ pokemon.baseExperience }}</p>
+      <p><strong>Habilidades:</strong> {{ pokemon.abilities.join(', ') }}</p>
+    </div>
+
+    <div class="stats">
+      <strong>Stats:</strong>
+      <div class="stat-row">
+        <div class="stat" *ngFor="let s of pokemon.stats">{{ s.name }}: {{ s.value }}</div>
+      </div>
+    </div>
+
+    <div class="evolution-panel" *ngIf="pokemon.evolutionChain?.length">
+      <strong>Línea evolutiva</strong>
+      <p class="evolution-status">{{ getEvolutionStatus() }}</p>
+      <div class="evolution-list">
+        <div
+          class="evolution-stage"
+          *ngFor="let stage of pokemon.evolutionChain; let i = index"
+          [class.active]="i === pokemon.evolutionStageIndex">
+          <span class="stage-name">{{ stage.name | titlecase }}</span>
+          <span class="stage-level" *ngIf="stage.minLevel">lvl {{ stage.minLevel }}</span>
+          <span class="stage-trigger" *ngIf="!stage.minLevel">{{ stage.trigger || 'trigger' }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Pokemon } from '../../model/PokemonModel';
 
 @Component({
   selector: 'app-pokemon-card',
   standalone: false,
   templateUrl: './pokemon-card.html',
-  styleUrl: './pokemon-card.scss',
+  styleUrls: ['./pokemon-card.scss'],
 })
 export class PokemonCard {
+
+  /**
+   * Recibe el `Pokemon` a mostrar en la tarjeta. El componente solo
+   * se encarga de presentar los datos (imagen, tipos, habilidades, stats).
+   */
+  @Input() pokemon!: Pokemon;
 
 }

@@ -1,1 +1,78 @@
-<p>pokemon-list-page works!</p>
+<div *ngIf="loading">
+  <h2>Cargando Pokémon...</h2>
+</div>
+
+<div *ngIf="error">
+  <h2>{{ error }}</h2>
+</div>
+
+<div *ngIf="!loading && !error">
+
+  <header class="pokedex-header">
+    <div class="left">
+      <div class="visor">POKÉDEX</div>
+    </div>
+    <div class="center">
+      <div class="search-box header-search">
+        <input
+          type="text"
+          placeholder="Buscar por nombre..."
+          [(ngModel)]="searchTerm"
+          (input)="onSearch(searchTerm)"
+        />
+        <span *ngIf="searching" class="search-status">Buscando...</span>
+      </div>
+    </div>
+    <div class="right">
+      <div class="controls">
+        <span class="red"></span>
+        <span class="white"></span>
+        <span class="black"></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="pokemon-container">
+    <aside class="pokedex-panel">
+      <div class="panel-top">
+        <div class="visor small">POKÉDEX</div>
+        <div class="indicator-bar">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="panel-body">
+        <h2>Tu PokéDex a la mano</h2>
+        <p>Usa el buscador superior para encontrar un Pokémon por nombre.</p>
+        <p>Selecciona cualquiera de la lista para ver su ficha completa, stats y evolución.</p>
+      </div>
+      <div class="panel-footer">
+        <span class="pixel-dot"></span>
+        <span class="pixel-dot"></span>
+        <span class="pixel-dot"></span>
+      </div>
+    </aside>
+
+    <div class="list-area">
+      <ul class="pokemon-list">
+        <li
+          class="list-item"
+          *ngFor="let pokemon of pokemons"
+          (click)="goToPokemon(pokemon.name)"
+          role="button"
+          tabindex="0"
+          (keydown.enter)="goToPokemon(pokemon.name)">
+
+          <span class="id">#{{ pokemon.id }}</span>
+          <img class="pokemon-thumb" [src]="pokemon.image" [alt]="pokemon.name" />
+          <span class="name">{{ pokemon.name | titlecase }}</span>
+
+        </li>
+      </ul>
+
+      <div class="pagination">
+        <button (click)="previousPage()" [disabled]="currentPage === 0">Anterior</button>
+        <button (click)="nextPage()">Siguiente</button>
+      </div>
+    </div>
+
+</div>

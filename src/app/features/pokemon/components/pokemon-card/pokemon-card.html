@@ -1,1 +1,41 @@
-<p>pokemon-card works!</p>
+<div class="pokemon-card">
+
+    <img
+        [src]="pokemon.image"
+        [alt]="pokemon.name">
+
+    <h2>{{ pokemon.name | titlecase }}</h2>
+
+    <p>
+        <strong>Altura:</strong>
+        {{ pokemon.height }}
+    </p>
+
+    <p>
+        <strong>Peso:</strong>
+        {{ pokemon.weight }}
+    </p>
+
+    <p>
+        <strong>Tipos:</strong>
+        {{ pokemon.types.join(', ') }}
+    </p>
+
+    <p>
+        <strong>Experiencia:</strong>
+        {{ pokemon.baseExperience }}
+    </p>
+
+    <p>
+      <strong>Habilidades:</strong>
+      {{ pokemon.abilities.join(', ') }}
+    </p>
+
+    <div class="stats">
+      <strong>Stats:</strong>
+      <ul>
+        <li *ngFor="let s of pokemon.stats">{{ s.name }}: {{ s.value }}</li>
+      </ul>
+    </div>
+
+</div>
