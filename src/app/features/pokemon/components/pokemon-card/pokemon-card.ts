@@ -9,10 +9,6 @@ import { Pokemon } from '../../model/PokemonModel';
 })
 export class PokemonCard {
 
-  /**
-   * Recibe el `Pokemon` a mostrar en la tarjeta. El componente solo
-   * se encarga de presentar los datos (imagen, tipos, habilidades, stats).
-   */
   @Input() pokemon!: Pokemon;
 
 }

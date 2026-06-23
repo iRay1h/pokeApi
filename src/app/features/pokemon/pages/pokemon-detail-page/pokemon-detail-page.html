@@ -5,10 +5,6 @@
   <div class="left-pane">
     <img [src]="pokemon.image" [alt]="pokemon.name" />
     <div class="mini-id">#{{ pokemon.id }}</div>
-    <button class="play-btn" (click)="playCry()">
-      {{ isPlaying ? 'Pausar cry' : 'Reproducir cry' }}
-    </button>
-    <audio #cryPlayer [src]="pokemon.cry"></audio>
   </div>
 
   <div class="right-pane">
@@ -37,20 +33,6 @@
       </div>
     </div>
 
-    <div class="evolution-panel" *ngIf="pokemon.evolutionChain?.length">
-      <strong>Línea evolutiva</strong>
-      <p class="evolution-status">{{ getEvolutionStatus() }}</p>
-      <div class="evolution-list">
-        <div
-          class="evolution-stage"
-          *ngFor="let stage of pokemon.evolutionChain; let i = index"
-          [class.active]="i === pokemon.evolutionStageIndex">
-          <span class="stage-name">{{ stage.name | titlecase }}</span>
-          <span class="stage-level" *ngIf="stage.minLevel">lvl {{ stage.minLevel }}</span>
-          <span class="stage-trigger" *ngIf="!stage.minLevel">{{ stage.trigger || 'trigger' }}</span>
-        </div>
-      </div>
-    </div>
 
   </div>
 

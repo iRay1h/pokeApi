@@ -8,17 +8,6 @@ export interface Pokemon {
     baseExperience: number;
     abilities: string[];
     stats: { name: string; value: number }[];
-    /** URL to an audio file with the Pokémon cry */
-    cry?: string;
-    evolutionChain?: EvolutionStage[];
-    evolutionStageIndex?: number;
-}
-
-export interface EvolutionStage {
-    id: number;
-    name: string;
-    minLevel?: number;
-    trigger?: string;
 }
 
 export interface PokemonResult {
@@ -59,30 +48,4 @@ export interface PokemonDetailResponse {
         };
     }[];
 
-}
-
-export interface PokemonSpeciesResponse {
-    evolution_chain: {
-        url: string;
-    };
-}
-
-export interface EvolutionDetail {
-    min_level?: number;
-    trigger: {
-        name: string;
-    };
-}
-
-export interface EvolutionChainLink {
-    species: {
-        name: string;
-        url: string;
-    };
-    evolves_to: EvolutionChainLink[];
-    evolution_details: EvolutionDetail[];
-}
-
-export interface EvolutionChainResponse {
-    chain: EvolutionChainLink;
 }

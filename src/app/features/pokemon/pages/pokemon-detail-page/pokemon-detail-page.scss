@@ -33,23 +33,6 @@
   width:360px;height:360px;image-rendering:pixelated;border:6px solid rgba(0,0,0,0.08);background:#fff;border-radius:8px;
 }
 
-.play-btn {
-  width:100%;
-  padding:12px 0;
-  border:none;
-  border-radius:14px;
-  font-weight:800;
-  letter-spacing:0.04em;
-  background:#2e7d32;
-  color:#fff;
-  margin-top:12px;
-  cursor:pointer;
-  box-shadow:0 8px 18px rgba(0,0,0,0.2);
-}
-
-.play-btn:hover {
-  background:#388e3c;
-}
 
 .right-pane{
   padding:10px 6px;display:flex;flex-direction:column;gap:10px;justify-content:flex-start;
@@ -88,50 +71,6 @@
 .stat-row{display:flex;gap:12px;flex-wrap:wrap}
 .stat{background:#fff;border-radius:6px;padding:8px 10px;border:3px solid rgba(0,0,0,0.06);color:#111}
 
-.evolution-panel {
-  margin-top: 20px;
-  background: rgba(0,0,0,0.03);
-  border-radius: 14px;
-  padding: 16px;
-  border: 2px dashed rgba(0,0,0,0.08);
-}
-
-.evolution-status {
-  margin: 10px 0;
-  color: #444;
-}
-
-.evolution-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
-}
-
-.evolution-stage {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.08);
-  background: #fff;
-  color: #111;
-}
-
-.evolution-stage.active {
-  border-color: #2e7d32;
-  background: #e8f5e9;
-}
-
-.stage-name {
-  font-weight: 700;
-}
-
-.stage-level,
-.stage-trigger {
-  font-size: 0.95rem;
-  color: #555;
-}
 
 .back-btn{position:absolute;left:28px;top:28px;background:#ef5350;color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer}
 

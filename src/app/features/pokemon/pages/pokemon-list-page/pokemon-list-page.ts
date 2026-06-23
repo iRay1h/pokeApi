@@ -30,11 +30,6 @@ export class PokemonListPage implements OnInit {
     private router: Router
   ) {}
 
-  /**
-   * Al inicializar la página solicitamos la primera página de Pokémon.
-   * El componente mantiene estados de `loading` y `error` para mostrar
-   * la UI correspondiente.
-   */
   ngOnInit(): void {
     this.searchSubject
       .pipe(
@@ -46,6 +41,7 @@ export class PokemonListPage implements OnInit {
             this.error = '';
             return this.pokemonService.getPokemonList(this.currentPage * 20);
           }
+
           this.searching = true;
           return this.pokemonService.getPokemonByName(term.toLowerCase()).pipe(
             map((pokemon) => [pokemon]),
@@ -67,62 +63,45 @@ export class PokemonListPage implements OnInit {
   }
 
   loadPokemons(): void {
+    this.loading = true;
+    this.error = '';
 
-  this.loading = true;
-  this.error = '';
-
-  this.pokemonService
-    .getPokemonList(this.currentPage * 20)
-    .subscribe({
-
-      next: (data) => {
-
-        this.pokemons = data;
-        this.loading = false;
-
-      },
-
-      error: () => {
-
-        this.error = 'Error al cargar los Pokémon';
-        this.loading = false;
-
-      }
-
-    });
-
-}
+    this.pokemonService
+      .getPokemonList(this.currentPage * 20)
+      .subscribe({
+        next: (data) => {
+          this.pokemons = data;
+          this.loading = false;
+        },
+        error: () => {
+          this.error = 'Error al cargar los Pokémon';
+          this.loading = false;
+        }
+      });
+  }
 
   onSearch(term: string): void {
     this.searchTerm = term;
     this.searchSubject.next(term);
   }
 
-goToPokemon(name: string): void {
-
-  this.router.navigate([
-    '/pokemon',
-    name
-  ]);
-
-}
-
-nextPage(): void {
-
-  this.currentPage++;
-  this.loadPokemons();
-
-}
-
-previousPage(): void {
-
-  if(this.currentPage > 0){
-
-    this.currentPage--;
-    this.loadPokemons();
-
+  goToPokemon(name: string): void {
+    this.router.navigate([
+      '/pokemon',
+      name
+    ]);
   }
 
-}
+  nextPage(): void {
+    this.currentPage++;
+    this.loadPokemons();
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadPokemons();
+    }
+  }
 
 }
